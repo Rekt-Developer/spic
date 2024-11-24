@@ -1,0 +1,693 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font: 14px;
+  margin: 0px;
+  padding: 0px;
+}
+
+#game .resource {
+  width: 21px;
+  height: 21px;
+  margin: 1px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+#game .resource.selected {
+  border-spacing: 50px;
+  border-radius: 10px;
+  background-color: rgba(128, 128, 128, 0.85);
+  background-size: 80%;
+}
+
+#game .resource-Y {
+  background-image: url('img/cube-yellow.png');
+}
+
+#game .resource-R {
+  background-image: url('img/cube-red.png');
+}
+
+#game .resource-G {
+  background-image: url('img/cube-green.png');
+}
+
+#game .resource-B {
+  background-image: url('img/cube-brown.png');
+}
+
+#game .resource-any {
+  background-image: url('img/cube-any.png');
+}
+
+#game .coin {
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#game .coin.silver {
+  background-image: url('img/coin-silver.png');
+}
+
+#game .coin.gold {
+  background-image: url('img/coin-gold.png');
+}
+
+#game .resource-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#game .card {
+  position: relative;
+  min-width: 168px;
+  min-height: 288px;
+  max-width: 168px;
+  max-height: 288px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#game .card.inactive {
+  opacity: 0.5;
+}
+
+#game .card:hover {
+  z-index: 20;
+  transform: scale(1.15, 1.15);
+  cursor:pointer;
+}
+
+#game .card.inactive {
+  transform: scale(1, 1);
+}
+
+#game .card.selected {
+  transform: scale(1.15, 1.15);
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  filter: grayscale(100%);
+  z-index: 1;
+}
+
+#game .card-type-production {
+  background-image: url('img/resource-card-production.png');
+}
+
+#game .card-type-trading {
+  background-image: url('img/resource-card-trading.png');
+}
+
+#game .card-type-upgrade {
+  background-image: url('img/resource-card-upgrade.png');
+}
+
+#game .card-type-victory {
+  background-image: url('img/resource-card-victory.png');
+}
+
+#game .card-type-production .production-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: 15px;
+  top: 10px;
+  width: 27px;
+}
+
+#game .card-type-production .production-arrow-tip {
+  background-image: url('img/production-arrow-tip.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 27px;
+  height: 20px;
+}
+
+#game .card-type-production .production-arrow {
+  display: flex;
+  flex-direction: column;
+  width: 28px;
+  min-height: 45px;
+  background-image: url('img/production-arrow.png');
+  background-repeat: repeat;
+  background-size: 100%;
+}
+
+#game .card-type-production .resource-recipe {
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+#game .card-type-upgrade .upgrade-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: 17px;
+  top: 12px;
+  width: 28px;
+}
+
+#game .card-type-upgrade .upgrade-arrow-top {
+  background-image: url('img/upgrade-arrow-top.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 28px;
+  height: 25px;
+}
+
+#game .card-type-upgrade .upgrade-arrow-tip {
+  background-image: url('img/upgrade-arrow-tip.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 28px;
+  height: 20px;
+}
+
+#game .card-type-upgrade .upgrade-arrow {
+  display: flex;
+  flex-direction: column;
+  width: 28px;
+  min-height: 50px;
+  background-image: url('img/upgrade-arrow.png');
+  background-repeat: repeat;
+  background-size: 100%;
+}
+
+#game .card-type-upgrade .upgrade-cubes {
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+#game .card-type-trading .trading-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: 16px;
+  top: 12px;
+  width: 27px;
+}
+
+#game .card-type-trading .trading-inside-arrow {
+  background-image: url('img/trading-inside-arrow.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 27px;
+  height: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#game .card-type-trading .trading-arrow-tip {
+  background-image: url('img/trading-arrow-tip.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 28px;
+  height: 20px;
+}
+
+#game .card-type-trading .trading-arrow {
+  display: flex;
+  flex-direction: column;
+  width: 28px;
+  min-height: 48px;
+  background-image: url('img/trading-arrow.png');
+  background-repeat: repeat;
+  background-size: 100%;
+}
+
+#game .card-type-trading .resource-recipe {
+  margin-left: 2px;
+  margin-top: 1px;
+}
+
+#game .card .coin {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 100;
+  width: 48px;
+  height: 48px;
+}
+
+#game .victory-board .card-list {
+  display: flex;
+  flex-direction: row;
+}
+
+#game .victory-board .card .points {
+  position: absolute;
+  bottom: 40px;
+  color: white;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 38pt;
+}
+
+#game .victory-board .card .resource-recipe {
+  position: absolute;
+  bottom: 13px;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#game .resources-board .card-list {
+  display: flex;
+  flex-direction: row;
+}
+
+#game .resources-board .card-slot {
+  position: relative;
+}
+
+#game .resources-board .bonus-resources .resource-recipe {
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  position: absolute;
+  top: 30px;
+  right: 40px;
+}
+
+#game .resources-board .bonus-resources .resource {
+  width: 32px;
+  height: 32px;
+}
+
+#game .player-list {
+  display: flex;
+  flex-direction: column;
+}
+
+#game .player {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  transition: 0.3s;
+  padding: 0px;
+  margin-bottom: 10px;
+  width: 250px;
+  padding: 4px;
+}
+
+#game .player.selected {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+#game .player.not-selected {
+  background-color: rgba(96, 96, 96, 0.3);
+}
+
+#game .player .resource {
+  width: 32px;
+  height: 32px;
+}
+
+#game.active-player .player.selected .resource:hover {
+  transform: scale(1.15, 1.15);
+}
+
+#game .player .header {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+#game .player .name {
+  flex: 50%;
+  vertical-align: center;
+  margin-left: 10px;
+  padding-top: 20px;
+  text-align: left;
+  font-size: 16pt;
+  font-weight: bold;
+}
+
+#game .player-vp {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+  position: relative;
+}
+
+#game .player-vp .vp-cards {
+  width: 40px;
+  height: 40px;
+  background-image: url('img/resource-card-victory.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+#game .player-vp .coin {
+  width: 40px;
+  height: 40px;
+}
+
+#game .player .player-resources {
+  margin-left: 10px;
+}
+
+#game .player-hand {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#game .player-vp .score {
+  position: absolute;
+  bottom: -25px;
+  color: black;
+  width: inherit;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16pt;
+}
+
+#game .game-log {
+  margin: 5px;
+  margin-top: 20px;
+}
+
+#game .game-log .title {
+  font-size: 16pt;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#game .game-log .entries {
+  overflow: auto;
+  max-height: 300px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 10px;
+}
+
+#game .game-log .entries .turn-entry {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 14pt;
+  text-align: center;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.7);
+  border-top: solid 1px rgba(0, 0, 0, 0.7);
+}
+
+#game .game-log .entries .turn-entry .turn {
+  font-weight: bold;
+  font-size: 16pt;
+}
+
+#game .game-log .entries .entry {
+  font-size: 11pt;
+  margin-bottom: 10px;
+}
+
+#game .game-log .entries .entry.vp {
+  font-size: 12pt;
+  color: gold;
+}
+
+#game .game-log .entries .entry .player-name {
+  font-weight: bold;
+  font-size: 14pt;
+  margin-right: 5px;
+}
+
+#end-game {
+  display: flex;
+  justify-content: center;
+}
+
+#end-game .title {
+  font-size: 18pt;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+#end-game .restart {
+  margin: auto;
+  margin-bottom: 10px;
+  padding: 10px;
+  min-width: 100px;
+  text-align: center;
+  vertical-align: middle;
+  color: white;
+  background-color: #008CBA;
+  font-size: 12pt;
+  border-radius: 8px;
+  opacity: 0.9;
+  cursor:pointer;
+}
+
+#end-game .home {
+  margin: auto;
+  padding: 10px;
+  min-width: 100px;
+  text-align: center;
+  vertical-align: middle;
+  color: white;
+  background-color: red;
+  font-size: 12pt;
+  border-radius: 8px;
+  opacity: 0.9;
+  cursor:pointer;
+}
+
+#end-game .end-game-content {
+  display: flex;
+  flex-direction: column;
+}
+
+#end-game .end-game-content .logo {
+  width: 100%;
+  height: auto;
+  text-align:center;
+}
+
+#end-game .player-score {
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  transition: 0.3s;
+  margin-bottom: 30px;
+  min-width: 300px;
+  padding: 10px;
+}
+
+#end-game .player-score .name {
+  margin: 10px;
+  font-size: 16pt;
+  font-weight: bold;
+  color: black;
+}
+
+#end-game .player-score .score .score-total {
+  font-size: 16pt;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 10px;
+}
+
+#end-game .player-score .score span {
+  color: red;
+  font-weight: bold;
+}
+
+#end-game .player-score.winner {
+  box-shadow: 0 4px 8px 0 rgba(255, 215, 0, 0.85);
+  background-color: rgba(255, 215, 0, 0.85);
+  transform: scale(1.15, 1.15);
+}
+
+#game {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#game.active-player {
+  background-color: rgb(172, 188, 218);
+}
+
+#game.not-active-player {
+  background-color: rgb(235, 235, 235);
+}
+
+#error {
+  position: fixed;
+  padding: 20px;
+  left: 50%;
+  top: 10px;
+  transform: translateX(-50%);
+  background-color: rgba(255, 0, 0, 1);
+  border: solid 1px red;
+  border-radius: 5px;
+  font-size: 12pt;
+  color: white;
+  display: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 1000;
+}
+
+#error.active {
+  display: block;
+}
+
+#error .message {}
+
+#error .dismiss {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#error .dismiss:hover {
+  color: black;
+}
+
+#updating-server-message {
+  position: fixed;
+  padding: 10px;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  background-color: rgba(255, 128, 0, 0.7);
+  border: solid 1px white;
+  border-radius: 5px;
+  font-size: 12pt;
+  color: white;
+  display: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 1000;
+}
+
+#updating-server-message.active {
+  display: block;
+}
+
+#panel {
+  margin: 20px;
+}
+
+#upgrade-resources-order {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+#game .home {
+  width: 48px;
+  height: 48px;
+  text-decoration: none;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  z-index: 100;
+}
+
+#game .home img {
+  border-radius: 25px;
+  border: solid 1px gold;
+}
+
+#game-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#game-info .logo {
+  height: 200px;
+}
+
+#game-info a.rules {
+  text-decoration: none;
+}
+
+#game-info a:visited.rules {
+  text-decoration: none;
+}
+
+#action-bar {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+#action-bar .updating-server-message {
+  font-size: 24pt;
+  color: red;
+  font-weight: bold;
+  display: none;
+}
+
+#action-bar .updating-server-message.active {
+  display: block;
+}
+
+#action-bar .last-turn-message {
+  font-size: 24pt;
+  color: red;
+  font-weight: bold;
+  display: none;
+}
+
+#action-bar .last-turn-message.active {
+  display: block;
+}
+
+#action-bar .action-content {
+  display: flex;
+  flex-direction: row;
+}
+
+#action-bar .action-button {
+  margin-left: 10px;
+  min-width: 50px;
+  height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  color: white;
+  background-color: #008CBA;
+  font-size: 11pt;
+  padding: 8px;
+  border-radius: 8px;
+  opacity: 0.9;
+  cursor:pointer;
+}
+
+#action-bar .action-button:hover {
+  opacity: 1.0;
+}
+
+#action-bar .message {
+  line-height: 35px;
+}
+
+#game-board {}
